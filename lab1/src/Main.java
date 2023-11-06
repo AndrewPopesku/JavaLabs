@@ -1,3 +1,5 @@
+import java.util.Date;
+
 /**
  * Demonstrates the use of the SportCompetition and its builders.
  */
@@ -8,9 +10,9 @@ public class Main {
         CompetitionBuilder tennisCompetitionBuilder = new TennisCompetitionBuilder();
 
         organizer.setCompetitionBuilder(footballCompetitionBuilder);
-        organizer.organizeCompetition();
+        organizer.organizeCompetition(new Date("11/12/2022"));
 
         organizer.setCompetitionBuilder(tennisCompetitionBuilder);
-        organizer.organizeCompetition();
+        organizer.organizeCompetition(new Date());
     }
 }

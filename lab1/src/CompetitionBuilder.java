@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -16,7 +17,7 @@ abstract class CompetitionBuilder {
 
     public abstract void buildName();
     public abstract void buildVenue();
-    public abstract void buildDate();
+    public abstract void buildDate(Date date);
 
     @Override
     public String toString() {

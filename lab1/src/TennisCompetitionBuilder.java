@@ -1,3 +1,5 @@
+import java.util.Date;
+
 /**
  * Concrete builder for creating a Tennis competition.
  */
@@ -10,8 +12,8 @@ class TennisCompetitionBuilder extends CompetitionBuilder {
         sportCompetition.setVenue("Tennis Club");
     }
 
-    public void buildDate() {
-        sportCompetition.setDate("2023-12-05");
+    public void buildDate(Date date) {
+        sportCompetition.setDate(date);
     }
 
     @Override

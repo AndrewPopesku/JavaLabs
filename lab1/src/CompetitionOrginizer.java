@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -19,13 +20,13 @@ class CompetitionOrganizer {
     }
 
     /**
-     * Method to organize a competition.
+     * Method to organize a competition on specified date
      */
-    public void organizeCompetition() {
+    public void organizeCompetition(Date date) {
         competitionBuilder.createNewCompetition();
         competitionBuilder.buildName();
         competitionBuilder.buildVenue();
-        competitionBuilder.buildDate();
+        competitionBuilder.buildDate(date);
 
         System.out.println(competitionBuilder.sportCompetition.getName() + " competition was held on the "
             + competitionBuilder.sportCompetition.getVenue() + " on the date: " + competitionBuilder.sportCompetition.getDate());

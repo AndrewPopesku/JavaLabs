@@ -1,12 +1,13 @@
+import java.util.Date;
 import java.util.Objects;
 
 /**
  * Represents a sport competition.
  */
 public class SportCompetition {
-    private String name = "";
-    private String venue = "";
-    private String date = "";
+    private String name;
+    private String venue;
+    private Date date;
 
     public void setName(String name) {
         this.name = name;
@@ -24,11 +25,11 @@ public class SportCompetition {
         return venue;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 

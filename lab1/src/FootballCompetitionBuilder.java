@@ -1,3 +1,5 @@
+import java.util.Date;
+
 /**
  * Concrete builder for creating a Football competition.
  */
@@ -10,8 +12,8 @@ class FootballCompetitionBuilder extends CompetitionBuilder {
         sportCompetition.setVenue("Stadium XYZ");
     }
 
-    public void buildDate() {
-        sportCompetition.setDate("2023-11-10");
+    public void buildDate(Date date) {
+        sportCompetition.setDate(date);
     }
 
     @Override
