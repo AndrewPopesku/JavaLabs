@@ -1,5 +1,7 @@
 package org.example;
 
+import java.time.LocalDate;
+
 /**
  * Concrete builder for creating a Tennis competition.
  */
@@ -12,8 +14,8 @@ public class TennisCompetitionBuilder extends CompetitionBuilder {
         sportCompetition.setVenue("Tennis Club");
     }
 
-    public void buildDate() {
-        sportCompetition.setDate("2023-12-05");
+    public void buildDate(LocalDate date) {
+        sportCompetition.setDate(date);
     }
 
     @Override

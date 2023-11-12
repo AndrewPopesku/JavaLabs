@@ -11,7 +11,7 @@ public interface Serializer<T> {
     /**
      * Deserialization from String
      */
-    T deserialize(String data);
+    T deserialize(String data, Class<T> valueType);
 
     /**
      * Write serialized data to file
@@ -21,5 +21,5 @@ public interface Serializer<T> {
     /**
      * Read serialized data from file
      */
-    T readFromFile(File file);
+    T readFromFile(File file, Class<T> valueType);
 }

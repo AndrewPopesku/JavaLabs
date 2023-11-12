@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -21,16 +22,13 @@ public class CompetitionOrganizer {
     }
 
     /**
-     * Method to organize a competition.
+     * Method to organize a competition on specified date
      */
-    public void organizeCompetition() {
+    public void organizeCompetition(LocalDate date) {
         competitionBuilder.createNewCompetition();
         competitionBuilder.buildName();
         competitionBuilder.buildVenue();
-        competitionBuilder.buildDate();
-
-        System.out.println(competitionBuilder.sportCompetition.getName() + " competition was held on the "
-            + competitionBuilder.sportCompetition.getVenue() + " on the date: " + competitionBuilder.sportCompetition.getDate());
+        competitionBuilder.buildDate(date);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -18,7 +19,7 @@ abstract class CompetitionBuilder {
 
     public abstract void buildName();
     public abstract void buildVenue();
-    public abstract void buildDate();
+    public abstract void buildDate(LocalDate date);
 
     @Override
     public String toString() {

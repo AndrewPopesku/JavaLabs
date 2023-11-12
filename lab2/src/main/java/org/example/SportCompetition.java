@@ -1,14 +1,25 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * Represents a sport competition.
  */
 public class SportCompetition {
-    private String name = "";
-    private String venue = "";
-    private String date = "";
+    private String name;
+    private String venue;
+    private LocalDate date;
+
+    public SportCompetition() {
+
+    }
+
+    public SportCompetition(String name, String venue, LocalDate date) {
+        setName(name);
+        setVenue(venue);
+        setDate(date);
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -26,11 +37,11 @@ public class SportCompetition {
         return venue;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

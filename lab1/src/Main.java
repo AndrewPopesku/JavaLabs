@@ -12,6 +12,8 @@ public class Main {
         organizer.setCompetitionBuilder(footballCompetitionBuilder);
         organizer.organizeCompetition(new Date("11/12/2022"));
 
+
+
         organizer.setCompetitionBuilder(tennisCompetitionBuilder);
         organizer.organizeCompetition(new Date());
     }
