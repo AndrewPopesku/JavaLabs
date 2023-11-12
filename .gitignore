@@ -9,3 +9,8 @@
 
 # Logs
 *.log
+
+# Output files
+*.json
+*.xml
+*.txt
