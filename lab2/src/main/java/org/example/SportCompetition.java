@@ -47,7 +47,7 @@ public class SportCompetition {
 
     @Override
     public String toString() {
-        return "SportCompetition{" +
+        return "{" +
                 "name='" + name + '\'' +
                 ", venue='" + venue + '\'' +
                 ", date='" + date + '\'' +

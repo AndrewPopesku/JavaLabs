@@ -15,7 +15,7 @@ public class Main {
         organizer.organizeCompetition(LocalDate.of(2023, 12, 12));
         SportCompetition sportCompetition = organizer.getSportCompetition();
 
-        txtTest(sportCompetition);
+        jsonTest(sportCompetition);
     }
 
     public static void jsonTest(SportCompetition sportCompetition) {

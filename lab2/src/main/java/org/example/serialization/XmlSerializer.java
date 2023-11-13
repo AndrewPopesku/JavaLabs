@@ -1,10 +1,12 @@
 package org.example.serialization;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
@@ -18,7 +20,7 @@ public class XmlSerializer<T> implements Serializer<T> {
         xmlMapper.registerModule(new JavaTimeModule());
         xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         xmlMapper.setDateFormat(dateFormat);
     }
 
@@ -26,9 +28,8 @@ public class XmlSerializer<T> implements Serializer<T> {
     public String serialize(T entity) {
         try {
             return xmlMapper.writeValueAsString(entity);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -36,37 +37,31 @@ public class XmlSerializer<T> implements Serializer<T> {
     public T deserialize(String data, Class<T> valueType) {
         try {
             return xmlMapper.readValue(data, valueType);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     public void writeToFile(T entity, File file) {
-        try {
-            // Convert the object to XML string
-            String xmlString = serialize(entity);
+        String xmlString = serialize(entity);
 
-            if (file.exists()) {
-                Files.write(file.toPath(), xmlString.getBytes(), StandardOpenOption.WRITE);
-            } else {
-                Files.write(file.toPath(), xmlString.getBytes(), StandardOpenOption.CREATE);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        try {
+            Files.write(file.toPath(), xmlString.getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     public T readFromFile(File file, Class<T> valueType) {
+        String xmlString = null;
         try {
-            String xmlString = new String(Files.readAllBytes(file.toPath()));
-
-            return deserialize(xmlString, valueType);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+            xmlString = new String(Files.readAllBytes(file.toPath()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
+        return deserialize(xmlString, valueType);
     }
 }
