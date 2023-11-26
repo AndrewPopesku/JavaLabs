@@ -1,24 +1,58 @@
 package org.example;
 
+import org.example.SportCompetitionPackage.SportCompetition;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class SportCompetitionService {
-    public static void sortUsingComparable(List<SportCompetition> sportCompetitionList) {
-        Collections.sort(sportCompetitionList);
+public class SportCompetitionService implements ISportCompetitionService {
+
+    private final List<SportCompetition> competitions;
+
+    public SportCompetitionService(List<SportCompetition> competitions) {
+        this.competitions = competitions;
     }
 
-    public static void sortUsingComparator(List<SportCompetition> sportCompetitionList) {
-        Comparator<SportCompetition> sortOptionByName = Comparator.comparing(SportCompetition::getName);
-        Collections.sort(sportCompetitionList, sortOptionByName);
+    @Override
+    public List<SportCompetition> sortByName() {
+        List<SportCompetition> result = new ArrayList<>(competitions);
+        result.sort(Comparator.comparing(SportCompetition::getName));
+        return result;
     }
 
-    public static List<SportCompetition> filterAfterDateCompetitions(List<SportCompetition> sportCompetitionList, LocalDate minDate) {
-        return sportCompetitionList.stream()
-                .filter(sc -> sc.getDate().isAfter(minDate))
-                .toList();
+    @Override
+    public List<SportCompetition> sortByDate() {
+        List<SportCompetition> result = new ArrayList<>(competitions);
+        result.sort(Comparator.comparing(SportCompetition::getDate));
+        return result;
+    }
+
+    @Override
+    public List<SportCompetition> getCompetitionsAfterDate(LocalDate minDate) {
+        List<SportCompetition> result = new ArrayList<>();
+
+        competitions.forEach(competition -> {
+            if (competition.getDate().isAfter(minDate))
+                result.add(competition);
+        });
+
+        Collections.sort(result, Comparator.comparing(SportCompetition::getDate));
+        return result;
+    }
+
+    @Override
+    public List<SportCompetition> getCompetitionsByName(String name) {
+        List<SportCompetition> result = new ArrayList<>();
+
+        competitions.forEach(competition -> {
+            if (competition.getName().contains(name))
+                result.add(competition);
+        });
+
+        Collections.sort(result, Comparator.comparing(SportCompetition::getName));
+        return result;
     }
 }

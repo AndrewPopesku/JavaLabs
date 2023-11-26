@@ -1,12 +1,13 @@
-package org.example;
+package org.example.SportCompetitionPackage;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 /**
  * A class to organize sport competitions.
  */
-public class CompetitionOrganizer {
+class CompetitionOrganizer {
     private CompetitionBuilder competitionBuilder;
 
     public void setCompetitionBuilder(CompetitionBuilder cb) {
@@ -29,6 +30,9 @@ public class CompetitionOrganizer {
         competitionBuilder.buildName();
         competitionBuilder.buildVenue();
         competitionBuilder.buildDate(date);
+
+        System.out.println(competitionBuilder.sportCompetition.getName() + " competition was held on the "
+            + competitionBuilder.sportCompetition.getVenue() + " on the date: " + competitionBuilder.sportCompetition.getDate());
     }
 
     @Override

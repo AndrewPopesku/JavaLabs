@@ -1,13 +1,15 @@
 package org.example;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.Objects;
 
 /**
  * Represents a sport competition.
  */
-public class SportCompetition implements Comparable<SportCompetition>, Comparator<SportCompetition> {
+public class SportCompetition {
+    @NotBlank
     private String name;
     private String venue;
     private LocalDate date;
@@ -48,16 +50,11 @@ public class SportCompetition implements Comparable<SportCompetition>, Comparato
 
     @Override
     public String toString() {
-        return "SportCompetition{" +
+        return "{" +
                 "name='" + name + '\'' +
                 ", venue='" + venue + '\'' +
                 ", date='" + date + '\'' +
                 '}';
-    }
-
-    @Override
-    public int compare(SportCompetition o1, SportCompetition o2) {
-        return 0;
     }
 
     @Override
@@ -71,10 +68,5 @@ public class SportCompetition implements Comparable<SportCompetition>, Comparato
     @Override
     public int hashCode() {
         return Objects.hash(name, venue, date);
-    }
-
-    @Override
-    public int compareTo(SportCompetition o) {
-        return this.getDate().compareTo(o.getDate());
     }
 }
