@@ -6,26 +6,38 @@ import jakarta.validation.Validator;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 /**
- * Abstract builder for creating different types of sport competitions.
+ * A class to organize sport competitions.
  */
-abstract class CompetitionBuilder {
-    protected SportCompetition sportCompetition;
+class CompetitionOrganizer {
+    private CompetitionBuilder competitionBuilder;
+
+    public void setCompetitionBuilder(CompetitionBuilder cb) {
+        competitionBuilder = cb;
+    }
+
+    public CompetitionBuilder getCompetitionBuilder() {
+        return competitionBuilder;
+    }
 
     public SportCompetition getSportCompetition() {
-        return sportCompetition;
+        return competitionBuilder.getSportCompetition();
     }
 
-    public void createNewCompetition() {
-        sportCompetition = new SportCompetition();
-    }
+    /**
+     * Method to organize a competition on specified date
+     */
+    public void organizeCompetition(LocalDate date) {
+        competitionBuilder.createNewCompetition();
+        competitionBuilder.buildName();
+        competitionBuilder.buildVenue();
+        competitionBuilder.buildDate(date);
 
-    public abstract void buildName();
-    public abstract void buildVenue();
-    public abstract void buildDate(LocalDate date);
+        SportCompetition competition = competitionBuilder.getSportCompetition();
+        validate(competition);
+    }
 
     public void validate(SportCompetition sportCompetition) {
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
@@ -41,3 +53,7 @@ abstract class CompetitionBuilder {
         }
     }
 }
+
+
+
+

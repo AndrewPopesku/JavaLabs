@@ -1,8 +1,14 @@
 package org.example;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A class to organize sport competitions.
@@ -30,30 +36,10 @@ class CompetitionOrganizer {
         competitionBuilder.buildName();
         competitionBuilder.buildVenue();
         competitionBuilder.buildDate(date);
-
-        System.out.println(competitionBuilder.sportCompetition.getName() + " competition was held on the "
-            + competitionBuilder.sportCompetition.getVenue() + " on the date: " + competitionBuilder.sportCompetition.getDate());
+        competitionBuilder.validate(getSportCompetition());
     }
 
-    @Override
-    public String toString() {
-        return "CompetitionOrganizer{" +
-                "competitionBuilder=" + competitionBuilder +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CompetitionOrganizer that = (CompetitionOrganizer) o;
-        return Objects.equals(competitionBuilder, that.competitionBuilder);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(competitionBuilder);
-    }
 }
 
 
