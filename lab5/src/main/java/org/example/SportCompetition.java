@@ -12,6 +12,7 @@ import java.util.Objects;
  * Represents a sport competition.
  */
 public class SportCompetition {
+    private int id;
     @NotBlank(message = "name cannot be blank")
     @Size(min=2, max = 30, message = "{Size.name}")
     private String name;
@@ -76,5 +77,13 @@ public class SportCompetition {
     @Override
     public int hashCode() {
         return Objects.hash(name, venue, date);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'ch.qos.logback:logback-classic:1.2.6' // Replace with the latest version
+
+    // https://mvnrepository.com/artifact/org.glassfish.expressly/expressly
+    implementation group: 'org.glassfish.expressly', name: 'expressly', version: '5.0.0'
+    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.1.Final'
+    implementation 'org.xerial:sqlite-jdbc:3.44.1.0'
+
+}
+
+test {
+    useJUnitPlatform()
+}

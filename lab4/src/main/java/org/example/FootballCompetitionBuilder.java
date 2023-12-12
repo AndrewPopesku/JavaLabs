@@ -7,7 +7,7 @@ import java.time.LocalDate;
  */
 public class FootballCompetitionBuilder extends CompetitionBuilder {
     public void buildName() {
-        sportCompetition.setName("Football Championship");
+        sportCompetition.setName("F");
     }
 
     public void buildVenue() {

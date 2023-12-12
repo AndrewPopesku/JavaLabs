@@ -29,15 +29,14 @@ abstract class CompetitionBuilder {
 
     public void validate(SportCompetition sportCompetition) {
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-
-        Set<String> validationMessages = new HashSet<>();
+        Set<String> messages = new HashSet<>();
         Set<ConstraintViolation<SportCompetition>> violations = validator.validate(sportCompetition);
         for (ConstraintViolation<SportCompetition> v : violations) {
-            validationMessages.add(v.getInvalidValue() + ": " + v.getMessage());
+            messages.add(v.getInvalidValue() + ": " + v.getMessage());
         }
 
-        if (!validationMessages.isEmpty()) {
-            throw new IllegalArgumentException("Invalid fields: " + String.join(", ", validationMessages));
+        if (!messages.isEmpty()) {
+            throw new IllegalArgumentException("Invalid fields: " + String.join(", ", messages));
         }
     }
 }

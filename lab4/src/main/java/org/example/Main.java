@@ -4,18 +4,11 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        CompetitionOrganizer organizer = new CompetitionOrganizer();
-        CompetitionBuilder footballCompetitionBuilder = new FootballCompetitionBuilder();
-        CompetitionBuilder tennisCompetitionBuilder = new TennisCompetitionBuilder();
+        SportCompetition football = null;
 
-        organizer.setCompetitionBuilder(footballCompetitionBuilder);
-
-        try {
-            organizer.organizeCompetition(LocalDate.of(2022, 12, 12));
-            organizer.getSportCompetition();
-        }
-        catch (IllegalArgumentException e) {
-            System.out.println(e);
-        }
+        CompetitionOrganizer organizer1 = new CompetitionOrganizer();
+        organizer1.setCompetitionBuilder(new FootballCompetitionBuilder());
+        organizer1.organizeCompetition(LocalDate.of(2023, 12, 12));
+        football = organizer1.getSportCompetition();
     }
 }

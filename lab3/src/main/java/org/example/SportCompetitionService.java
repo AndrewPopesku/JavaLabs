@@ -18,9 +18,8 @@ public class SportCompetitionService implements ISportCompetitionService {
 
     @Override
     public List<SportCompetition> sortByName() {
-        List<SportCompetition> result = new ArrayList<>(competitions);
-        result.sort(Comparator.comparing(SportCompetition::getName));
-        return result;
+        Collections.sort(competitions);
+        return competitions;
     }
 
     @Override

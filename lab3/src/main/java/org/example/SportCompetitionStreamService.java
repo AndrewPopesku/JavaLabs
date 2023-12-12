@@ -18,7 +18,7 @@ public class SportCompetitionStreamService implements ISportCompetitionService{
     @Override
     public List<SportCompetition> sortByName() {
         return competitions.stream()
-                .sorted(Comparator.comparing(SportCompetition::getName))
+                .sorted()
                 .collect(Collectors.toList());
     }
 

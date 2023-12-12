@@ -13,10 +13,10 @@ import java.util.Objects;
  */
 public class SportCompetition {
     @NotBlank(message = "name cannot be blank")
-    @Size(min=2, max = 30, message = "{Size.name}")
+    @Size(min=2, max = 30, message = "Size must be from 2 to 30 chars")
     private String name;
     @NotBlank(message = "name cannot be blank")
-    @Size(min=2, max = 30, message = "{Size.name}")
+    @Size(min=2, max = 30, message = "Size must be from 2 to 30 chars")
     private String venue;
     @NotNull(message = "Date cannot be null")
     @Future(message = "Date must be in the future")

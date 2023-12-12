@@ -69,6 +69,6 @@ public class SportCompetition implements Comparable<SportCompetition> {
 
     @Override
     public int compareTo(SportCompetition o) {
-        return this.getDate().compareTo(o.getDate());
+        return this.getName().compareTo(o.getName());
     }
 }
